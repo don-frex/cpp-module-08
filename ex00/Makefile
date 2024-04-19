@@ -6,7 +6,7 @@
 #    By: asaber <asaber@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/14 20:20:56 by asaber            #+#    #+#              #
-#    Updated: 2024/02/26 12:58:26 by asaber           ###   ########.fr        #
+#    Updated: 2024/04/04 02:42:57 by asaber           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ $(NAME) : $(OBJS)
 	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	@for i in `seq 1 $(BANNER_LENGTH)`; do \
 		echo $(BANNER) | sed -n "$$i p"; \
-		sleep 0.1; \
+		sleep 0.04; \
 	done
 	@sleep 0.5
 	@echo "$(ICYAN)Done !$(END)"

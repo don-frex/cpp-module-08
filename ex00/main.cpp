@@ -6,7 +6,7 @@
 /*   By: asaber <asaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 12:53:12 by asaber            #+#    #+#             */
-/*   Updated: 2024/02/26 14:00:11 by asaber           ###   ########.fr       */
+/*   Updated: 2024/04/19 12:54:16 by asaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int	main()
 		arrlist.push_back(i * 3 + 1);
 		linklist.push_back(i * 3 + 1);
 	}
+	
+	arrlist.insert(arrlist.begin(), 1337);
+	std::vector<int>::iterator it = arrlist.begin();
+	std::cout << *it << std::endl;
 
 	try
 	{

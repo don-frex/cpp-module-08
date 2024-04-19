@@ -6,7 +6,7 @@
 /*   By: asaber <asaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:34:14 by asaber            #+#    #+#             */
-/*   Updated: 2024/02/27 21:06:29 by asaber           ###   ########.fr       */
+/*   Updated: 2024/04/19 22:35:54 by asaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void Span::addNumber(unsigned int nbr)
 {
 	std::vector<int>::iterator ito = std::find(Slist.begin(), Slist.end(), nbr);
 	if (ito != Slist.end())
-		throw std::exception();
+		throw std::runtime_error("This Number already added!");
 	else if (Slist.size() < N)
 		Slist.push_back((int) nbr);
 	else
@@ -52,24 +52,25 @@ void Span::addNumber(unsigned int nbr)
 int Span::shortestSpan()
 {
 	if (Slist.size() < 2)
-		throw std::exception();
-	std::vector<int> tmp = Slist;
-	std::sort(tmp.begin(), tmp.end());
-	int min = tmp[1] - tmp[0];
-	for(int i = 2; tmp[i]; i++)
+		throw std::runtime_error("you can't use \"shortestSpan\" with one number!");
+	std::sort(Slist.begin(), Slist.end());
+	int min = Slist[1] - Slist[0];
+	std::vector<int>::iterator it = Slist.begin() + 1;
+	for(; it != Slist.end() - 1; it++)
 	{
-		if ((tmp[i] - tmp[i - 1]) < min)
-			min = tmp[i] - tmp[i - 1];
+		if (min > (*(it + 1) - *it))
+			min = *(it + 1) - *it;
 	}
-	return min;
+	return min;	
 }
 
 
 int Span::longestSpan()
 {
 	if (Slist.size() < 2)
-		throw std::exception();
-	std::vector<int> tmp = Slist;
-	std::sort(tmp.begin(), tmp.end());
-	return tmp[tmp.size() - 1] - tmp[0];
+		throw std::runtime_error("you can't use \"longestSpan\" with one number!");
+	std::sort(Slist.begin(), Slist.end());
+	std::vector<int>::iterator itmax = Slist.end() - 1;
+	std::vector<int>::iterator itmin = Slist.begin();
+	return *itmax - *itmin;
 }
