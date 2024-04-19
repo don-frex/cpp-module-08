@@ -6,7 +6,7 @@
 /*   By: asaber <asaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:34:14 by asaber            #+#    #+#             */
-/*   Updated: 2024/04/19 22:35:54 by asaber           ###   ########.fr       */
+/*   Updated: 2024/04/19 23:48:43 by asaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,11 @@ int Span::shortestSpan()
 {
 	if (Slist.size() < 2)
 		throw std::runtime_error("you can't use \"shortestSpan\" with one number!");
-	std::sort(Slist.begin(), Slist.end());
-	int min = Slist[1] - Slist[0];
-	std::vector<int>::iterator it = Slist.begin() + 1;
-	for(; it != Slist.end() - 1; it++)
+	std::vector<int> tmp = Slist;
+	std::sort(tmp.begin(), tmp.end());
+	int min = tmp[1] - tmp[0];
+	std::vector<int>::iterator it = tmp.begin() + 1;
+	for(; it != tmp.end() - 1; it++)
 	{
 		if (min > (*(it + 1) - *it))
 			min = *(it + 1) - *it;
@@ -69,8 +70,9 @@ int Span::longestSpan()
 {
 	if (Slist.size() < 2)
 		throw std::runtime_error("you can't use \"longestSpan\" with one number!");
-	std::sort(Slist.begin(), Slist.end());
-	std::vector<int>::iterator itmax = Slist.end() - 1;
-	std::vector<int>::iterator itmin = Slist.begin();
+	std::vector<int> tmp = Slist;
+	std::sort(tmp.begin(), tmp.end());
+	std::vector<int>::iterator itmax = tmp.end() - 1;
+	std::vector<int>::iterator itmin = tmp.begin();
 	return *itmax - *itmin;
 }
