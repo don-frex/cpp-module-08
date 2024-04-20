@@ -6,7 +6,7 @@
 /*   By: asaber <asaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:31:15 by asaber            #+#    #+#             */
-/*   Updated: 2024/03/09 12:32:46 by asaber           ###   ########.fr       */
+/*   Updated: 2024/04/20 14:50:06 by asaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ class MutantStack : public std::stack<T>
 		MutantStack& operator = (const MutantStack &other);
 		~MutantStack();
 		typedef typename std::deque<T>::iterator iterator;
-		iterator begin();
-		iterator end();
+		iterator begin() { return this->c.begin(); };
+		iterator end() { return this->c.end(); };
 };
 
 template <typename T>
